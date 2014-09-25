@@ -11,10 +11,36 @@
 | some more tesxt here
 |
 */
-
 Route::get('users', function()
 {
-	return Response::view('hello test text');
+	$users = User::all();
+	
+	return View::make('users')->with('users',$users);
+});
+Route::get('users_json', function()
+{
+	$users = User::all();
+
+	return Response::view($users);
+});
+
+Route::get('user/{id}', 'UserController@showProfile');
+
+Route::get('json/user/{id}', 'UserController@showUser');
+
+Route::get('users_old', function()
+{
+	return Response::view('hello');
+});
+
+Route::get('test', function()
+{
+	return Response::view('emails/auth/test');
+});
+
+Route::get('reminder', function()
+{
+	return Response::view('emails/auth/test.me');
 });
 
 
