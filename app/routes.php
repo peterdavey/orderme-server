@@ -21,7 +21,7 @@ Route::get('users_json', function()
 {
 	$users = User::all();
 
-	return Response::view($users);
+	return $users;
 });
 
 Route::get('user/{id}', 'UserController@showProfile');
